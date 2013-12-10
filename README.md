@@ -1,6 +1,9 @@
 # JSON crusher TrafficServer plugin
 
-This plugin has been developped and tested on GNU/Linux Debian only.
+This plugin has been developped and tested on GNU/Linux Debian only and against
+`TrafficServer` 4.0.2.
+
+__Previous ATS versions have not been tested__
 
 It makes use of json-c, which is available on Debian Wheezy from backport repository
 
