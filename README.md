@@ -33,11 +33,8 @@ representents a cheap optimization and bandwith spare with little efforts.
 
 3. Finally build JCruncher.
 
-    #If you build ATS from source
-    tsxs -o jcrusher.so -c jcrusher-transform.c -I<PATH_TO_ATS_BUILD>/lib/ts -ljson-c -Ljson-c
-
-    #If you installed trafficserver-dev package
-    tsxs -o jcrusher.so -c jcrusher-transform.c -ljson-c -Ljson-c
+    tsxs -o jcrusher.so -c jcrusher-transform.c -I<PATH_TO_ATS_BUILD>/lib/ts -ljson-c -Ljson-c # If you build ATS from source
+    tsxs -o jcrusher.so -c jcrusher-transform.c -ljson-c -Ljson-c # If you installed trafficserver-dev package
 
 ## Install
 
