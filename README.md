@@ -26,15 +26,19 @@ representents a cheap optimization and bandwith spare with little efforts.
 
 1. install build dependencies (I assume you already have a build environment)
 
+    ```
     apt-get install libjson-c-dev # from Wheezy backport repo
+    ```
 
 2. You have to build trafficserver so that headers files will be available. Build can
    be done either from source, or you need to install `trafficserver-dev` package.
 
 3. Finally build JCruncher.
 
+    ```
     tsxs -o jcrusher.so -c jcrusher-transform.c -I<PATH_TO_ATS_BUILD>/lib/ts -ljson-c -Ljson-c # If you build ATS from source
     tsxs -o jcrusher.so -c jcrusher-transform.c -ljson-c -Ljson-c # If you installed trafficserver-dev package
+    ```
 
 ## Install
 
@@ -42,7 +46,9 @@ representents a cheap optimization and bandwith spare with little efforts.
 
 2. install libjson-c on your ATS server
 
+    ```
     apt-get install libjson-c2 # from Wheezy backport repo
+    ```
 
 2. add `jcrusher.so` to `/etc/trafficserver/plugin.config`
 
