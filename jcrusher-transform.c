@@ -73,6 +73,7 @@ jcrusher_data_alloc()
   data->downstream_reader = NULL;
 
   data->json_tok = json_tokener_new();
+  data->json_obj = NULL;
   return data;
 }
 
@@ -85,15 +86,12 @@ jcrusher_data_destroy(JCrusherData * data)
       TSDebug("jcrusher", "jcrusher_data_destroy - destroying downstream buffer");
       TSIOBufferDestroy(data->downstream_buffer);
     }
-    //FIXME: makes trafficserver segfault from time to time.
-    //       Problem is, seems that keeping json_object
-    //       leads to memory leaks :(
-    //if (data->json_obj) {
-    //  TSDebug("jcrusher", "jcrusher_data_destroy - destroying json object");
-    //  json_object_put(data->json_obj);
-    //  data->json_obj = NULL;
-    //  TSDebug("jcrusher", "jcrusher_data_destroy - destroying json object -> done");
-    //}
+    if (data->json_obj) {
+      TSDebug("jcrusher", "jcrusher_data_destroy - destroying json object");
+      json_object_put(data->json_obj);
+      data->json_obj = NULL;
+      TSDebug("jcrusher", "jcrusher_data_destroy - destroying json object -> done");
+    }
     if (data->json_tok) {
       TSDebug("jcrusher", "jcrusher_data_destroy - destroying json tokener");
       json_tokener_free(data->json_tok);
